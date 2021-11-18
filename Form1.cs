@@ -66,8 +66,15 @@ namespace formElements
 
         private void Pbox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            pbox.Image = Image.FromFile(@"../../img/hehe.png");
-            pbox.Image = Image.FromFile(@"../../img/hehe1.png");
+            if (e.Clicks==2)
+            {
+                pbox.Image = Image.FromFile(@"../../img/hehe.png");
+            }
+            else if (e.Clicks==3)
+            {
+                pbox.Image = Image.FromFile(@"../../img/hehe1.png");
+            }
+            
             pbox.Image = Image.FromFile(@"../../img/hehe2.png");
             pbox.Image = Image.FromFile(@"../../img/hehe3.png");
 
