@@ -51,7 +51,21 @@ namespace formElements
             this.Controls.Add(tree);
             //picturebox
             pbox = new PictureBox();
-            pbox.Image=
+            pbox.Image =Image.FromFile("../../cat.png");
+            pbox.Location = new Point(400, 15);
+            pbox.Size = new Size(170,139);
+            pbox.MouseDoubleClick += Pbox_MouseDoubleClick;
+            pbox.MouseLeave += Pbox_MouseLeave;
+        }
+
+        private void Pbox_MouseLeave(object sender, EventArgs e)
+        {
+            pbox.Image = Image.FromFile("../../nothehe.png");
+        }
+
+        private void Pbox_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            pbox.Image = Image.FromFile("../../hehe.png");
         }
 
         private void Lbl_MouseLeave(object sender, EventArgs e)
@@ -78,6 +92,10 @@ namespace formElements
             else if (e.Node.Text=="label")
             {
                 this.Controls.Add(lbl);
+            }
+            else if (e.Node.Text == "picturebox")
+            {
+                this.Controls.Add(pbox);
             }
         }
     }
