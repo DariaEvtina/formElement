@@ -51,21 +51,27 @@ namespace formElements
             this.Controls.Add(tree);
             //picturebox
             pbox = new PictureBox();
-            pbox.Image =Image.FromFile("../../cat.png");
-            pbox.Location = new Point(400, 15);
-            pbox.Size = new Size(170,139);
+            pbox.Image =Image.FromFile(@"../../img/cat.png");
+            pbox.Location = new Point(150, 40);
+            pbox.Size = new Size(150,129);
+            pbox.SizeMode = PictureBoxSizeMode.StretchImage;
             pbox.MouseDoubleClick += Pbox_MouseDoubleClick;
             pbox.MouseLeave += Pbox_MouseLeave;
         }
 
         private void Pbox_MouseLeave(object sender, EventArgs e)
         {
-            pbox.Image = Image.FromFile("../../nothehe.png");
+            pbox.Image = Image.FromFile(@"../../img/nothehe.png");
         }
 
         private void Pbox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            pbox.Image = Image.FromFile("../../hehe.png");
+            pbox.Image = Image.FromFile(@"../../img/hehe.png");
+            pbox.Image = Image.FromFile(@"../../img/hehe1.png");
+            pbox.Image = Image.FromFile(@"../../img/hehe2.png");
+            pbox.Image = Image.FromFile(@"../../img/hehe3.png");
+
+                
         }
 
         private void Lbl_MouseLeave(object sender, EventArgs e)
