@@ -118,6 +118,10 @@ namespace formElements
             rb2.Text = "Regular";
             rb2.Checked = new bool();
             rb2.CheckedChanged += Rb2_CheckedChanged;
+            //textbox
+            txt = new TextBox();
+            txt.Location= new Point(320, 200);
+            txt.Size = new Size(100,100);
         }
 
         private void Rb2_CheckedChanged(object sender, EventArgs e)
@@ -371,6 +375,11 @@ namespace formElements
                 this.Controls.Add(rb);
                 this.Controls.Add(rb1);
                 this.Controls.Add(rb2);
+            }
+            else if (e.Node.Text == "textbox")
+            {
+                this.Controls.Add(txt);
+
             }
             else if (e.Node.Text == "messagebox")
             {
