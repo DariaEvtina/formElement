@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\cat.png" />
+    <Content Include="img\cat1.png" />
+    <Content Include="img\empty.png" />
     <Content Include="img\hehe.png" />
     <Content Include="img\hehe1.png" />
     <Content Include="img\hehe2.png" />
