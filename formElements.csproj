@@ -81,6 +81,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\a.png" />
     <Content Include="img\blue.png" />
     <Content Include="img\cat.png" />
     <Content Include="img\cat1.png" />
@@ -91,6 +92,7 @@
     <Content Include="img\hehe3.png" />
     <Content Include="img\nothehe.png" />
     <Content Include="img\RED.png" />
+    <Content Include="img\wut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
