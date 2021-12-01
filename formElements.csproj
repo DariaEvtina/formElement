@@ -91,8 +91,10 @@
     <Content Include="img\hehe2.png" />
     <Content Include="img\hehe3.png" />
     <Content Include="img\nothehe.png" />
+    <Content Include="img\realcat.png" />
     <Content Include="img\RED.png" />
     <Content Include="img\wut.png" />
+    <Content Include="img\plants.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

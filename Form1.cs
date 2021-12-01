@@ -31,6 +31,7 @@ namespace formElements
         ListBox listBox3;
 
 
+
         public Form1()
         {
             this.Height = 600;
@@ -40,6 +41,7 @@ namespace formElements
             tree.Dock = DockStyle.Left;
             tree.AfterSelect += Tree_AfterSelect;
             TreeNode th = new TreeNode("Elemendit");
+            th.Nodes.Add(new TreeNode("DataGridView"));
             th.Nodes.Add(new TreeNode("button"));
             th.Nodes.Add(new TreeNode("label"));
             th.Nodes.Add(new TreeNode("picturebox"));
@@ -49,6 +51,8 @@ namespace formElements
             th.Nodes.Add(new TreeNode("tabcontrol"));
             th.Nodes.Add(new TreeNode("messagebox"));
             th.Nodes.Add(new TreeNode("listbox"));
+            th.Nodes.Add(new TreeNode("MainMenu"));
+
             //button
             btn = new Button();
             btn.Text = "Click";
@@ -254,6 +258,8 @@ namespace formElements
             pbox.Image = Image.FromFile(@"../../img/nothehe.png");
         }
         int click = 0;
+        private EventHandler chbox_Select;
+
         private void Pbox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             string[] images = { "cat.png", "hehe.png", "hehe1.png", "hehe2.png", "hehe3.png" };
@@ -327,7 +333,7 @@ namespace formElements
             {
                 tabC = new TabControl();
                 tabC.Location = new Point(450,50);
-                tabC.Size = new Size(300, 400);
+                tabC.Size = new Size(290, 290);
                 TabPage tab1 = new TabPage("my web-page");
                 WebBrowser wb = new WebBrowser();
                 wb.Url = new Uri("https://evtina20.thkit.ee/phpLeht");
@@ -335,7 +341,7 @@ namespace formElements
                 TabPage tab2 = new TabPage("Cutcat");
                 PictureBox PIC = new PictureBox();
                 PIC.Image= Image.FromFile(@"../../img/a.png");
-                pbox.Size = new Size(150, 129);
+                pbox.Size = new Size(120, 129);
                 pbox.SizeMode = PictureBoxSizeMode.CenterImage;
                 tab2.Controls.Add(PIC);
                 TabPage tab3 = new TabPage("Third");
@@ -371,7 +377,7 @@ namespace formElements
                 }
 
             }
-            else if (e.Node.Text=="listbox")
+            else if (e.Node.Text =="listbox")
             {
                 listBox3 = new ListBox();
                 listBox3.Items.Add("green");
@@ -393,7 +399,60 @@ namespace formElements
                 this.Controls.Add(listBox3);
 
             }
+            else if (e.Node.Text == "DataGridView")
+            {
+                DataSet ds = new DataSet("new xml file 'plants'");
+                ds.ReadXml(@"..\..\img\plants.xml");
+                DataGridView gd = new DataGridView();
+                gd.Width = 300;
+                gd.Height = 150;
+                gd.Location = new Point(290, 350);
+                gd.AutoGenerateColumns = true;
+                gd.DataSource = ds;
+                gd.DataMember = "PLANT";
+                this.Controls.Add(gd);
+            }
+            else if (e.Node.Text=="MainMenu")
+            {
+                MainMenu menu = new MainMenu();
+                MenuItem fileM = new MenuItem("file");
+                fileM.MenuItems.Add("Exit", new EventHandler(fileM_EXIT_Select));
+                MenuItem catM = new MenuItem("cat");
+                fileM.MenuItems.Add("realism", new EventHandler(catM_Select));
+                MenuItem boxM = new MenuItem("box");
+                fileM.MenuItems.Add("Change CheckBox", new EventHandler(Chbox_Select));
+                MenuItem boxBackM = new MenuItem("box");
+                fileM.MenuItems.Add("Rollback CheckBox", new EventHandler(Chbox_Select1));
+                menu.MenuItems.Add(fileM);
+                this.Menu = menu;
+
+            }
         }
+
+        private void catM_Select(object sender, EventArgs e)
+        {
+            pbox.Image = Image.FromFile(@"../../img/realcat.png");
+        }
+
+        private void fileM_EXIT_Select(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void Chbox_Select(object sender, EventArgs e)
+        {
+             ckbox.Text = "?????";
+             ckbox1.Text = "?????";
+             ckbox2.Text = "?????";
+             ckbox3.Text = "?????";
+        }
+        private void Chbox_Select1(object sender, EventArgs e)
+        {
+            ckbox.Text = "Background";
+            ckbox1.Text = "Font";
+            ckbox2.Text = "Size";
+            ckbox3.Text = "Cat";
+        }
+
         // Обработчик события, срабатывающий при выборе одного из пунктов списка
         void listBox3_SelectedIndexChanged(object sender, System.EventArgs e)
         {
