@@ -28,7 +28,7 @@ namespace formElements
         RadioButton rb2;
         TextBox txt;
         TabControl tabC;
-
+        ListBox listBox3;
 
 
         public Form1()
@@ -48,6 +48,7 @@ namespace formElements
             th.Nodes.Add(new TreeNode("textbox"));
             th.Nodes.Add(new TreeNode("tabcontrol"));
             th.Nodes.Add(new TreeNode("messagebox"));
+            th.Nodes.Add(new TreeNode("listbox"));
             //button
             btn = new Button();
             btn.Text = "Click";
@@ -369,6 +370,47 @@ namespace formElements
                     MessageBox.Show("there will be no turning back, bb LOSER", ">:|");
                 }
 
+            }
+            else if (e.Node.Text=="listbox")
+            {
+                listBox3 = new ListBox();
+                listBox3.Items.Add("green");
+                listBox3.Items.Add("yellow");
+                listBox3.Items.Add("blue");
+                listBox3.Items.Add("gray");
+                listBox3.Items.Add("red");
+                listBox3.Items.Add("Royal blue");
+                listBox3.Items.Add("rosy brown");
+                listBox3.Items.Add("misty rose");
+                listBox3.Items.Add("moccasin");
+                listBox3.Items.Add("alice blue");
+                listBox3.Items.Add("sandy brown");
+                listBox3.Items.Add("burly wood");
+                listBox3.Location = new Point(170, 250);
+                listBox3.Width = 100; 
+                listBox3.Height = 100;
+                listBox3.SelectedIndexChanged += new EventHandler(listBox3_SelectedIndexChanged);
+                this.Controls.Add(listBox3);
+
+            }
+        }
+        // Обработчик события, срабатывающий при выборе одного из пунктов списка
+        void listBox3_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            switch (listBox3.SelectedItem.ToString())
+            {
+                case ("green"): tree.BackColor = Color.Green; break;
+                case ("yellow"): tree.BackColor = Color.Yellow; break;
+                case ("blue"): tree.BackColor = Color.Blue; break;
+                case ("gray"): tree.BackColor = Color.Gray; break;
+                case ("red"): tree.BackColor = Color.Red; break;
+                case ("Royal blue"): tree.BackColor = Color.RoyalBlue; break;
+                case ("rosy brown"): tree.BackColor = Color.RosyBrown; break;
+                case ("misty rose"): tree.BackColor = Color.MistyRose; break;
+                case ("moccasin"): tree.BackColor = Color.Moccasin; break;
+                case ("alice blue"): tree.BackColor = Color.AliceBlue; break;
+                case ("burly wood"): tree.BackColor = Color.BurlyWood; break;
+                case ("sandy brown"): tree.BackColor = Color.SandyBrown; break;
             }
         }
 
