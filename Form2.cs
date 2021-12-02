@@ -26,7 +26,8 @@ namespace formElements
         RadioButton rbt5;
         RadioButton rbt6;
         TreeView menu;
-        
+        public int player = 0;
+
         public Form2()
         {
             this.Height = 700;
@@ -82,7 +83,7 @@ namespace formElements
             }
         }
 
-        public int player=0;
+        
         private void Menu_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Text == "Singale player")
@@ -93,6 +94,10 @@ namespace formElements
             {
 
                 player = 2;
+            }
+            else
+            {
+                player = 0;
             }
         }
 
