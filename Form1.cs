@@ -52,7 +52,7 @@ namespace formElements
             th.Nodes.Add(new TreeNode("messagebox"));
             th.Nodes.Add(new TreeNode("listbox"));
             th.Nodes.Add(new TreeNode("MainMenu"));
-
+            this.Controls.Add(btn);
             //button
             btn = new Button();
             btn.Text = "Click";
@@ -234,7 +234,7 @@ namespace formElements
             }
             else
             {
-                this.Height = 500;
+                this.Height = 600;
                 this.Width = 800;
             }
             
@@ -258,8 +258,6 @@ namespace formElements
             pbox.Image = Image.FromFile(@"../../img/nothehe.png");
         }
         int click = 0;
-        private EventHandler chbox_Select;
-
         private void Pbox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             string[] images = { "cat.png", "hehe.png", "hehe1.png", "hehe2.png", "hehe3.png" };
@@ -268,9 +266,6 @@ namespace formElements
             click++;
             if (click == 5) { click = 0; }
 
-            
-
-                
         }
 
         private void Lbl_MouseLeave(object sender, EventArgs e)
@@ -288,6 +283,9 @@ namespace formElements
         private void Btn_Click(object sender, EventArgs e)
         {
             btn.Text = "ha-ha";
+            Form2 rsp = new Form2();
+            rsp.Show();
+
         }
 
         private void Tree_AfterSelect(object sender, TreeViewEventArgs e)
