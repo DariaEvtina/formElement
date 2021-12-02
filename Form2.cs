@@ -81,6 +81,18 @@ namespace formElements
             {
                 MessageBox.Show("Please Choose the players mode", "<:O");
             }
+            else if (player==1)
+            {
+                tittle.Visible = false;
+                author.Visible = false;
+                btn.Visible = false;
+            }
+            else if (player == 2)
+            {
+                tittle.Visible = false;
+                author.Visible = false;
+                btn.Visible = false;
+            }
         }
 
         
