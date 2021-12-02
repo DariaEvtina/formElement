@@ -102,6 +102,7 @@
     <Content Include="img\nothehe.png" />
     <Content Include="img\realcat.png" />
     <Content Include="img\RED.png" />
+    <Content Include="img\rpsIMG\choose.png" />
     <Content Include="img\rpsIMG\paper.png" />
     <Content Include="img\rpsIMG\rock.png" />
     <Content Include="img\rpsIMG\sicers.png" />

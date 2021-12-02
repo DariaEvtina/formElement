@@ -85,13 +85,17 @@ namespace formElements
             {
                 tittle.Visible = false;
                 author.Visible = false;
-                btn.Visible = false;
+                btn.Text = "!!!";
+                pb = new PictureBox 
+                { 
+                    Image= Image.FromFile(@"../../img/rpsIMG/choose.png"),
+                    Location=new Point(280, 200)
+                };
             }
             else if (player == 2)
             {
                 tittle.Visible = false;
                 author.Visible = false;
-                btn.Visible = false;
             }
         }
 
