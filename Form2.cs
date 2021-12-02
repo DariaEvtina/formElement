@@ -69,10 +69,19 @@ namespace formElements
                 BackColor = Color.FromArgb(60, 138, 150),
                 Bounds = new Rectangle(280, 200, 90, 50)
             };
-            
+            btn.Click += Btn_Click;
             this.Controls.Add(btn);
 
         }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            if (player==0)
+            {
+                MessageBox.Show("Please Choose the players mode", "<:O");
+            }
+        }
+
         public int player=0;
         private void Menu_AfterSelect(object sender, TreeViewEventArgs e)
         {
