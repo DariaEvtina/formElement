@@ -285,6 +285,7 @@ namespace formElements
             btn.Text = "ha-ha";
             Form2 rsp = new Form2();
             rsp.Show();
+            this.Hide();
 
         }
 
@@ -483,5 +484,9 @@ namespace formElements
             this.tabC.TabPages.Remove(tabC.SelectedTab);
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

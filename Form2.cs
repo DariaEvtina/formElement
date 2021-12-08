@@ -14,7 +14,8 @@ namespace formElements
     public partial class Form2 : Form
     {
         private bool t;
-        string[] RPS = { "rock","papper","sicers" };
+        public int v1=0;
+        public int v2 = 0;
         public string text;
         PictureBox pb;
         PictureBox pb1;
@@ -25,6 +26,7 @@ namespace formElements
         Button btn1;
         TreeView menu;
         ListBox listBox;
+        ListBox listBox1;
         public int player = 0;
 
 
@@ -165,6 +167,14 @@ namespace formElements
                     this.Controls.Add(rbt2);
                     this.Controls.Add(rbt3);*/
                     this.Controls.Add(btn1);
+                    listBox = new ListBox();
+                    listBox.Items.Add("Rock");
+                    listBox.Items.Add("Paper");
+                    listBox.Items.Add("Sicers");
+                    listBox.Location = new Point(530, 200);
+                    listBox.Size = new Size(60, 70);
+                    this.Controls.Add(listBox);
+                    listBox.SelectedIndexChanged += ListBox_SelectedIndexChanged;
                 }
             }
 
@@ -218,10 +228,22 @@ namespace formElements
                         Size = new Size(150, 129),
                         SizeMode = PictureBoxSizeMode.StretchImage
                     };
+                    this.Controls.Add(btn1);
                     listBox = new ListBox();
-                    listBox.Items.Add("green");
-                    listBox.Items.Add("yellow");
-                    listBox.Items.Add("blue");
+                    listBox.Items.Add("Rock");
+                    listBox.Items.Add("Paper");
+                    listBox.Items.Add("Sicers");
+                    listBox.Location = new Point(530, 200);
+                    listBox.Size = new Size(60, 70);
+                    this.Controls.Add(listBox);
+                    listBox1 = new ListBox();
+                    listBox1.Items.Add("Rock");
+                    listBox1.Items.Add("Paper");
+                    listBox1.Items.Add("Sicers");
+                    listBox1.Location = new Point(50, 200);
+                    listBox1.Size = new Size(60, 70);
+                    this.Controls.Add(listBox1);
+                    listBox1.Visible = false;
                     this.Controls.Add(pb1);
                 }
                 
@@ -291,19 +313,49 @@ namespace formElements
 
             }
         }
-                
 
+        private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (player==1)
+            {
+                switch (listBox.SelectedItem.ToString())
+                {
+                    case ("Rock"): v1 = 1; Random rnd = new Random(); v2 = rnd.Next(1, 4); break;
+                    case ("Paper"): v1 = 2; Random rnd1 = new Random(); v2 = rnd1.Next(1, 4); break;
+                    case ("Sicers"): v1 = 3; Random rnd2 = new Random(); v2 = rnd2.Next(1, 4); break;
+                }
+            }
+            else if (player==2)
+            {
+                switch (listBox.SelectedItem.ToString())
+                {
+                    case ("Rock"): v1 = 1; break;
+                    case ("Paper"): v1 = 2; break;
+                    case ("Sicers"): v1 = 3; break;
+                }
+                switch (listBox1.SelectedItem.ToString())
+                {
+                    case ("Rock"): v2 = 1; break;
+                    case ("Paper"): v2 = 2; break;
+                    case ("Sicers"): v2 = 3; break;
+                }
+            }
+        }
         private void Lbl_DoubleClick(object sender, EventArgs e)
         {
             pb.Visible = true;
-           
+            listBox.Visible = true;
             player = 2;
+            pb1.Visible = false;
+            listBox1.Visible = false;
         }
 
         private void Lbl_Click(object sender, EventArgs e)
         {
             
             pb.Visible = false;
+            listBox.Visible = false;
+            listBox1.Visible = true;
             pb1.Visible = true;
             player = 3;
         }
