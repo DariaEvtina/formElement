@@ -16,7 +16,8 @@ namespace formElements
         private bool t;
         public int v1=0;
         public int v2 = 0;
-        public string text;
+        public string name1;
+        public string name2;
         PictureBox pb;
         PictureBox pb1;
         Label lbl;
@@ -37,7 +38,8 @@ namespace formElements
             this.Text = "RockPaperSicers";
             menu = new TreeView();
             menu.Dock = DockStyle.Bottom;
-            menu.AfterSelect += Menu_AfterSelect;
+            menu.AfterSelect +=Menu_AfterSelect;
+            TreeNode ex = new TreeNode("back to menu");
             TreeNode th = new TreeNode("Rock Paper Sicers - players");
             th.Nodes.Add(new TreeNode("Singale player"));
             th.Nodes.Add(new TreeNode("Two players"));
@@ -46,6 +48,7 @@ namespace formElements
             menu.Nodes.Add(th1);
             TreeNode th2 = new TreeNode("Rock Paper Sicers - style");
             menu.Nodes.Add(th2);
+            menu.Nodes.Add(ex);
             this.Controls.Add(menu);
             //Tittle
             tittle = new Label
@@ -93,10 +96,10 @@ namespace formElements
                 var answer = MessageBox.Show("Want enter youre user name?", "?????", MessageBoxButtons.YesNo);
                 if (answer == DialogResult.Yes)
                 {
-                    text = Interaction.InputBox("Enter youre user nmae", "InputBox", "text");
-                    if (MessageBox.Show("Do you want to save your user name?", "Text save", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    name1 = Interaction.InputBox("Enter youre user name", "InputBox", "text");
+                    if (MessageBox.Show($"Your user name: {name1}?", "Text save", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        MessageBox.Show($"thanks {text}", ":3");
+                        MessageBox.Show($"thanks {name1}", ":3");
                         t = true;
                     }
                     else
@@ -174,19 +177,23 @@ namespace formElements
                     listBox.Location = new Point(530, 200);
                     listBox.Size = new Size(60, 70);
                     this.Controls.Add(listBox);
-                    listBox.SelectedIndexChanged += ListBox_SelectedIndexChanged;
+                    listBox.SelectedIndexChanged += new EventHandler (ListBox_SelectedIndexChanged);
+                    listBox.Visible = true;
+                    pb.Visible = true;
+                    pb1.Visible = true;
                 }
             }
 
             else if (player == 2)
             {
-                var answer1 = MessageBox.Show("Want enter youre user name?", "?????", MessageBoxButtons.YesNo);
+                var answer1 = MessageBox.Show("Want enter youres users names?", "?????", MessageBoxButtons.YesNo);
                 if (answer1 == DialogResult.Yes)
                 {
-                    text = Interaction.InputBox("Enter youre user nmae", "InputBox", "text");
-                    if (MessageBox.Show("Do you want to save your user name?", "Text save", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    name1 = Interaction.InputBox("First player enter youre user name", "InputBox", "player1");
+                    name2 = Interaction.InputBox("Second player enter youre user name", "InputBox", "player2");
+                    if (MessageBox.Show($"First player: {name1}\n Second player: {name2}?", "Text save", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
-                        MessageBox.Show($"thanks {text}", ":3");
+                        MessageBox.Show($"thanks {name1}", ":3");
                         t = true;
                     }
                     else
@@ -236,6 +243,7 @@ namespace formElements
                     listBox.Location = new Point(530, 200);
                     listBox.Size = new Size(60, 70);
                     this.Controls.Add(listBox);
+                    listBox.SelectedIndexChanged += new EventHandler(ListBox_SelectedIndexChanged);
                     listBox1 = new ListBox();
                     listBox1.Items.Add("Rock");
                     listBox1.Items.Add("Paper");
@@ -245,6 +253,25 @@ namespace formElements
                     this.Controls.Add(listBox1);
                     listBox1.Visible = false;
                     this.Controls.Add(pb1);
+                    listBox1.SelectedIndexChanged += new EventHandler(ListBox_SelectedIndexChanged);
+                    lbl = new Label
+                    {
+                        Text = "change player",
+                        ForeColor = Color.FromArgb(200, 248, 250),
+                        BackColor = Color.FromArgb(60, 138, 150),
+                        Font = new Font("Calibri", 10, FontStyle.Bold),
+                        Bounds = new Rectangle(280, 290, 90, 50)
+                    };
+
+                    lbl.Click += Lbl_Click;
+                    lbl.DoubleClick += Lbl_DoubleClick;
+                    this.Controls.Add(btn1);
+                    this.Controls.Add(lbl);
+                    listBox.Visible = true;
+                    pb.Visible = true;
+                    pb1.Visible = true;
+                    lbl.Visible = true;
+
                 }
                 
                 /*rbt1 = new RadioButton
@@ -254,65 +281,17 @@ namespace formElements
                     Location = new Point(530, 200),
                     Size = new Size(60, 30)
                 };
-                rbt1.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                rbt2 = new RadioButton
-                {
-                    Text = "Sicers",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(530, 240),
-                    Size = new Size(60, 30)
-                };
-                rbt2.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                rbt3 = new RadioButton
-                {
-                    Text = "Paper",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(530, 270),
-                    Size = new Size(60, 30)
-                };
-                rbt3.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
                 rbt4 = new RadioButton
                 {
                     Text = "Rock",
                     ForeColor = Color.FromArgb(70, 108, 110),
                     Location = new Point(70, 200),
                     Size = new Size(60, 30)
-                };
-                rbt4.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                rbt5 = new RadioButton
-                {
-                    Text = "Sicers",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(70, 240),
-                    Size = new Size(60, 30)
-                };
-                rbt5.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                rbt6 = new RadioButton
-                {
-                    Text = "Paper",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(70, 270),
-                    Size = new Size(60, 30)
-                };
-                rbt6.CheckedChanged += new EventHandler(Rb1_CheckedChanged);*/
-                lbl = new Label
-                {
-                    Text = "change player",
-                    ForeColor = Color.FromArgb(200, 248, 250),
-                    BackColor = Color.FromArgb(60, 138, 150),
-                    Font = new Font("Calibri", 10, FontStyle.Bold),
-                    Bounds = new Rectangle(280, 290, 90, 50)
-                };
-                
-                lbl.Click += Lbl_Click;
-                lbl.DoubleClick += Lbl_DoubleClick;
-                this.Controls.Add(btn1);
-                this.Controls.Add(lbl);
-
-            
-
+                };*/
             }
         }
+
+
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -324,21 +303,65 @@ namespace formElements
                     case ("Paper"): v1 = 2; Random rnd1 = new Random(); v2 = rnd1.Next(1, 4); break;
                     case ("Sicers"): v1 = 3; Random rnd2 = new Random(); v2 = rnd2.Next(1, 4); break;
                 }
+                if (v1==1)
+                {
+                    pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                }
+                else if (v1==2)
+                {
+                    pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                }
+                else if (v1 == 3)
+                {
+                    pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                }
             }
             else if (player==2)
             {
-                switch (listBox.SelectedItem.ToString())
+                
+                if (listBox1.Visible==true)
                 {
-                    case ("Rock"): v1 = 1; break;
-                    case ("Paper"): v1 = 2; break;
-                    case ("Sicers"): v1 = 3; break;
+                    switch (listBox1.SelectedItem.ToString())
+                    {
+                        case ("Rock"): v2 = 1; break;
+                        case ("Paper"): v2 = 2; break;
+                        case ("Sicers"): v2 = 3; break;
+                    }
+                    if (v2 == 1)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                    }
+                    else if (v2 == 2)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                    }
+                    else if (v2 == 3)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                    }
                 }
-                switch (listBox1.SelectedItem.ToString())
+                else if(listBox.Visible == true)
                 {
-                    case ("Rock"): v2 = 1; break;
-                    case ("Paper"): v2 = 2; break;
-                    case ("Sicers"): v2 = 3; break;
+                    switch (listBox.SelectedItem.ToString())
+                    {
+                        case ("Rock"): v1 = 1; break;
+                        case ("Paper"): v1 = 2; break;
+                        case ("Sicers"): v1 = 3; break;
+                    }
+                    if (v1 == 1)
+                    {
+                        pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                    }
+                    else if (v1 == 2)
+                    {
+                        pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                    }
+                    else if (v1 == 3)
+                    {
+                        pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                    }
                 }
+                
             }
         }
         private void Lbl_DoubleClick(object sender, EventArgs e)
@@ -362,6 +385,57 @@ namespace formElements
 
         private void Btn1_Click(object sender, EventArgs e)
         {
+            if (player==1)
+            {
+                if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
+                {
+                    tittle.Text = "YOU LOSE";
+                    tittle.Visible = true;
+                }
+                else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
+                {
+                    tittle.Text = "YOU WIN";
+                    tittle.Visible = true;
+                }
+                else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
+                {
+                    tittle.Text = "DRAW";
+                    tittle.Visible = true;
+                }
+            }
+            else if (player==2)
+            {
+                if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
+                {
+                    tittle.Text = $"YOU LOSE {name1}";
+                    tittle.Visible = true;
+                }
+                else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
+                {
+                    tittle.Text = $"YOU WIN {name1}";
+                    tittle.Visible = true;
+                }
+                else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
+                {
+                    tittle.Text = "DRAW";
+                    tittle.Visible = true;
+                }
+                if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
+                {
+                    tittle.Text = $"YOU LOSE {name1}";
+                    tittle.Visible = true;
+                }
+                else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
+                {
+                    tittle.Text = $"YOU WIN {name1}";
+                    tittle.Visible = true;
+                }
+                else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
+                {
+                    tittle.Text = "DRAW";
+                    tittle.Visible = true;
+                }
+            }
             
         }
 
@@ -376,6 +450,20 @@ namespace formElements
             {
 
                 player = 2;
+            }
+            else if (e.Node.Text== "back to menu")
+            {
+                btn1.Visible = false;
+                tittle.Visible = true;
+                author.Visible = true;
+                btn.Visible = true;
+                tittle.Text = "Rock Paper Sicers game";
+                listBox.Visible = false;
+                listBox1.Visible = false;
+                pb.Visible = false;
+                pb1.Visible = false;
+                lbl.Visible = false;
+
             }
             else
             {
