@@ -29,14 +29,14 @@ namespace formElements
         ListBox listBox;
         ListBox listBox1;
         public int player = 0;
-        public int playedNow=0;
+        public int playedNow=1;
 
 
         public Form2()
         {
             this.Height = 700;
             this.Width = 700;
-            this.Text = "RockPaperSicers";
+            this.Text = "Rock-Paper-Sicers";
             menu = new TreeView();
             menu.Dock = DockStyle.Bottom;
             menu.AfterSelect +=Menu_AfterSelect;
@@ -393,16 +393,52 @@ namespace formElements
                 {
                     tittle.Text = "YOU LOSE";
                     tittle.Visible = true;
+                    if (v2 == 1)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                    }
+                    else if (v2 == 2)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                    }
+                    else if (v2 == 3)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                    }
                 }
                 else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
                 {
                     tittle.Text = "YOU WIN";
                     tittle.Visible = true;
+                    if (v2 == 1)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                    }
+                    else if (v2 == 2)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                    }
+                    else if (v2 == 3)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                    }
                 }
                 else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
                 {
                     tittle.Text = "DRAW";
                     tittle.Visible = true;
+                    if (v2 == 1)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                    }
+                    else if (v2 == 2)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                    }
+                    else if (v2 == 3)
+                    {
+                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                    }
                 }
             }
             else if (player==2)
@@ -411,31 +447,212 @@ namespace formElements
                 {
                     tittle.Text = $"YOU LOSE {name1}";
                     tittle.Visible = true;
+                    if (playedNow==1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+
                 }
                 else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
                 {
                     tittle.Text = $"YOU WIN {name1}";
                     tittle.Visible = true;
+                    if (playedNow == 1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
                 }
                 else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
                 {
                     tittle.Text = "DRAW";
                     tittle.Visible = true;
+                    if (playedNow == 1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
                 }
                 if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
                 {
-                    tittle.Text = $"YOU LOSE {name1}";
+                    tittle.Text = $"YOU LOSE {name2}";
                     tittle.Visible = true;
+                    if (playedNow == 1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
                 }
                 else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
                 {
-                    tittle.Text = $"YOU WIN {name1}";
+                    tittle.Text = $"YOU WIN {name2}";
                     tittle.Visible = true;
+                    if (playedNow == 1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
                 }
                 else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
                 {
                     tittle.Text = "DRAW";
                     tittle.Visible = true;
+                    if (playedNow == 1)
+                    {
+                        if (v2 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v2 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v2 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
+                    else if (playedNow == 2)
+                    {
+                        if (v1 == 1)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        }
+                        else if (v1 == 2)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        }
+                        else if (v1 == 3)
+                        {
+                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        }
+                    }
                 }
             }
             
