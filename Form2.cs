@@ -97,7 +97,7 @@ namespace formElements
                 var answer = MessageBox.Show("Want enter youre user name?", "?????", MessageBoxButtons.YesNo);
                 if (answer == DialogResult.Yes)
                 {
-                    name1 = Interaction.InputBox("Enter youre user name", "InputBox", "text");
+                    name1 = Interaction.InputBox("Enter youre user name", "InputBox", "player1");
                     if (MessageBox.Show($"Your user name: {name1}?", "Text save", MessageBoxButtons.OKCancel) == DialogResult.OK)
                     {
                         MessageBox.Show($"thanks {name1}", ":3");
