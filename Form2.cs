@@ -29,6 +29,7 @@ namespace formElements
         ListBox listBox;
         ListBox listBox1;
         public int player = 0;
+        public int playedNow=0;
 
 
         public Form2()
@@ -319,7 +320,7 @@ namespace formElements
             else if (player==2)
             {
                 
-                if (listBox1.Visible==true)
+                if (playedNow = 2)
                 {
                     switch (listBox1.SelectedItem.ToString())
                     {
@@ -340,7 +341,7 @@ namespace formElements
                         pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
                     }
                 }
-                else if(listBox.Visible == true)
+                else if(playedNow=1)
                 {
                     switch (listBox.SelectedItem.ToString())
                     {
@@ -371,6 +372,7 @@ namespace formElements
             player = 2;
             pb1.Visible = false;
             listBox1.Visible = false;
+            playedNow = 1;
         }
 
         private void Lbl_Click(object sender, EventArgs e)
@@ -380,7 +382,7 @@ namespace formElements
             listBox.Visible = false;
             listBox1.Visible = true;
             pb1.Visible = true;
-            player = 3;
+            playedNow = 2;
         }
 
         private void Btn1_Click(object sender, EventArgs e)
