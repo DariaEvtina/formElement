@@ -320,7 +320,7 @@ namespace formElements
             else if (player==2)
             {
                 
-                if (playedNow = 2)
+                if (playedNow == 2)
                 {
                     switch (listBox1.SelectedItem.ToString())
                     {
@@ -341,7 +341,7 @@ namespace formElements
                         pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
                     }
                 }
-                else if(playedNow=1)
+                else if(playedNow == 1)
                 {
                     switch (listBox.SelectedItem.ToString())
                     {
