@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +23,59 @@ namespace formElements
         PictureBox pb1;
         Label lbl;
         Label tittle;
+        int points = 0;
+        int points2 = 0;
         Label author;
         Button btn;
         Button btn1;
         TreeView menu;
+        NumericUpDown num;
+        int round;
         ListBox listBox;
         ListBox listBox1;
         public int player = 0;
         public int playedNow=1;
+        public void imgChangeWin()
+        {
+            pb.Visible = true;
+            pb1.Visible = true;
+        }
+        public void bcMenu()
+        {
+            btn1.Visible = false;
+            tittle.Visible = true;
+            author.Visible = true;
+            btn.Visible = true;
+            num.Visible = false;
+            tittle.Text = "Rock Paper Sicers game";
+            listBox.Visible = false;
+            listBox1.Visible = false;
+            pb.Visible = false;
+            pb1.Visible = false;
+            lbl.Visible = false;
+
+        }
+        public void imgChange1()
+        {
+            if (v1 == 1)
+            {
+                pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                pb.Visible = true;
+            }
+            else if (v1 == 2)
+            {
+                pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                pb.Visible = true;
+            }
+            else if (v1 == 3)
+            {
+                pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                pb.Visible = true;
+            }
+        }
         public void imgChange2() 
         {
-            if (playedNow == 1)
-            {
+
                 if (v2 == 1)
                 {
                     pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
@@ -49,25 +91,6 @@ namespace formElements
                     pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
                     pb1.Visible = true;
                 }
-            }
-            else if (playedNow == 2)
-            {
-                if (v1 == 1)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
-                    pb.Visible = true;
-                }
-                else if (v1 == 2)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
-                    pb.Visible = true;
-                }
-                else if (v1 == 3)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
-                    pb.Visible = true;
-                }
-            }
         }
 
         public Form2()
@@ -154,6 +177,14 @@ namespace formElements
                 }
                 if (t == true)
                 {
+                    num = new NumericUpDown { 
+                    Location= new Point(320, 270),
+                    Size = new Size(50, 30),
+                    BackColor = Color.FromArgb(60, 138, 150),
+                    ForeColor = Color.FromArgb(200, 248, 250)
+                    };
+                    round = Convert.ToInt32(num.Value);
+                    this.Controls.Add(num);
                     tittle.Visible = false;
                     author.Visible = false;
                     btn.Visible = false;
@@ -220,6 +251,7 @@ namespace formElements
                     listBox.Visible = true;
                     pb.Visible = true;
                     pb1.Visible = true;
+                    num.Visible = true;
                 }
             }
 
@@ -248,6 +280,15 @@ namespace formElements
                 }
                 if (t==true)
                 {
+                    num = new NumericUpDown
+                    {
+                        Location = new Point(320, 270),
+                        Size = new Size(50, 30),
+                        BackColor = Color.FromArgb(60, 138, 150),
+                        ForeColor = Color.FromArgb(200, 248, 250)
+                    };
+                    this.Controls.Add(num);
+                    round = Convert.ToInt32(num.Value);
                     tittle.Visible = false;
                     author.Visible = false;
                     btn.Visible = false;
@@ -310,6 +351,7 @@ namespace formElements
                     pb.Visible = true;
                     pb1.Visible = true;
                     lbl.Visible = true;
+                    num.Visible = true;
 
                 }
                 
@@ -342,18 +384,7 @@ namespace formElements
                     case ("Paper"): v1 = 2; Random rnd1 = new Random(); v2 = rnd1.Next(1, 4); break;
                     case ("Sicers"): v1 = 3; Random rnd2 = new Random(); v2 = rnd2.Next(1, 4); break;
                 }
-                if (v1==1)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
-                }
-                else if (v1==2)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
-                }
-                else if (v1 == 3)
-                {
-                    pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
-                }
+                imgChange2();
             }
             else if (player==2)
             {
@@ -366,18 +397,7 @@ namespace formElements
                         case ("Paper"): v2 = 2; break;
                         case ("Sicers"): v2 = 3; break;
                     }
-                    if (v2 == 1)
-                    {
-                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
-                    }
-                    else if (v2 == 2)
-                    {
-                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
-                    }
-                    else if (v2 == 3)
-                    {
-                        pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
-                    }
+                    imgChange2();
                 }
                 else if(playedNow == 1)
                 {
@@ -387,18 +407,7 @@ namespace formElements
                         case ("Paper"): v1 = 2; break;
                         case ("Sicers"): v1 = 3; break;
                     }
-                    if (v1 == 1)
-                    {
-                        pb.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
-                    }
-                    else if (v1 == 2)
-                    {
-                        pb.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
-                    }
-                    else if (v1 == 3)
-                    {
-                        pb.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
-                    }
+                    imgChange2();
                 }
                 
             }
@@ -425,97 +434,118 @@ namespace formElements
 
         private void Btn1_Click(object sender, EventArgs e)
         {
-            if (player==1)
+            int i = 0;
+            if (i<=round)
             {
-                if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
+                if (player == 1)
                 {
-                    tittle.Text = "YOU LOSE";
-                    tittle.Visible = true;
-                    imgChange2();
+                    if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
+                    {
+                        tittle.Text = $"round {i} \nYOU LOSE";
+                        tittle.Visible = true;
+                        i++;
+                        imgChangeWin();
+                    }
+                    else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
+                    {
+                        tittle.Text = $"round { i} \nYOU WIN";
+                        tittle.Visible = true;
+                        points++;
+                        i++;
+                        imgChangeWin();
+                    }
+                    else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
+                    {
+                        tittle.Text = $"round {i} \nDRAW";
+                        tittle.Visible = true;
+                        points++;
+                        i++;
+                        imgChangeWin();
+                    }
                 }
-                else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
+                else if (player == 2)
                 {
-                    tittle.Text = "YOU WIN";
-                    tittle.Visible = true;
-                    imgChange2();
-                }
-                else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
-                {
-                    tittle.Text = "DRAW";
-                    tittle.Visible = true;
-                    imgChange2();
-                }
-            }
-            else if (player==2)
-            {
-                if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
-                {
-                    tittle.Text = $"YOU LOSE {name1}";
-                    tittle.Visible = true;
-                    imgChange2();
-
-                }
-                else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
-                {
-                    tittle.Text = $"YOU WIN {name1}";
-                    tittle.Visible = true;
-                    imgChange2();
-                }
-                else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
-                {
-                    tittle.Text = "DRAW";
-                    tittle.Visible = true;
-                    imgChange2();
-                }
-                if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
-                {
-                    tittle.Text = $"YOU LOSE {name2}";
-                    tittle.Visible = true;
-                    imgChange2();
-                }
-                else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
-                {
-                    tittle.Text = $"YOU WIN {name2}";
-                    tittle.Visible = true;
-                    
-                }
-                else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
-                {
-                    tittle.Text = "DRAW";
-                    tittle.Visible = true;
                     if (playedNow == 1)
                     {
-                        if (v2 == 1)
+                        if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                        tittle.Text = $"round {i} \nYOU LOSE";
+                        tittle.Visible = true;
+                        i++;
+                        imgChangeWin();
                         }
-                        else if (v2 == 2)
+                        else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                        tittle.Text = $"round { i} \nYOU WIN";
+                        tittle.Visible = true;
+                        points++;
+                        i++;
+                        imgChangeWin();
                         }
-                        else if (v2 == 3)
+                        else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                        tittle.Text = $"round {i} \nDRAW";
+                        tittle.Visible = true;
+                        points++;
+                        i++;
+                        imgChangeWin();
                         }
-                    }
-                    else if (playedNow == 2)
+                }
+                    if (playedNow==2)
                     {
-                        if (v1 == 1)
+                        if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/rock.png");
+                            tittle.Text = $"round {i} \nYOU LOSE {name2}";
+                            tittle.Visible = true;
+                            imgChangeWin();
+                            i++;
                         }
-                        else if (v1 == 2)
+                        else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/paper.png");
+                            tittle.Text = $"round {i} \nYOU WIN {name2}";
+                            tittle.Visible = true;
+                            points2++;
+                            imgChangeWin();
+                            i++;
+
                         }
-                        else if (v1 == 3)
+                        else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
                         {
-                            pb1.Image = Image.FromFile(@"../../img/rpsIMG/sicers.png");
+                            tittle.Text = $"round {i} \nDRAW";
+                            tittle.Visible = true;
+                            points2++;
+                            imgChangeWin();
+                            i++;
+
+
                         }
                     }
+                    
                 }
             }
             
+            if (player == 1)
+            {
+                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
+                file.WriteLine("Player1: " + name1 + "Score:: " + points);
+                file.Close();
+            }
+            else if (player == 2)
+            {
+                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
+                file.WriteLine("Player1: "+ name1+ " Score: " + points+"\nPlayer2: "+name2+ " Score: "+ points2);
+                file.Close();
+            }
+            points = 0;
+            points2 = 0;
+            num.Value = 0;
+            v1 = 0;
+            v2 = 0;
+            pb.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
+            pb1.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
+            if (MessageBox.Show("Restart-Yes, Back to menu-No", "?????", MessageBoxButtons.YesNo) == DialogResult.No){
+                bcMenu();
+            }
         }
 
 
@@ -531,19 +561,7 @@ namespace formElements
                 player = 2;
             }
             else if (e.Node.Text == "back to menu")
-            {
-                btn1.Visible = false;
-                tittle.Visible = true;
-                author.Visible = true;
-                btn.Visible = true;
-                tittle.Text = "Rock Paper Sicers game";
-                listBox.Visible = false;
-                listBox1.Visible = false;
-                pb.Visible = false;
-                pb1.Visible = false;
-                lbl.Visible = false;
-
-            }
+            { bcMenu(); }
             else if (e.Node.Text == "Rock Paper Sicers - about")
             {
                 about abt = new about();
