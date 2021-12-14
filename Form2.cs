@@ -212,33 +212,6 @@ namespace formElements
                         SizeMode = PictureBoxSizeMode.StretchImage
                     };
                     this.Controls.Add(pb1);
-                    /*rbt1 = new RadioButton
-                    {
-                        Text = "Rock",
-                        ForeColor = Color.FromArgb(70, 108, 110),
-                        Location = new Point(530, 200),
-                        Size = new Size(60, 30)
-                    };
-                    rbt1.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                    rbt2 = new RadioButton
-                    {
-                        Text = "Sicers",
-                        ForeColor = Color.FromArgb(70, 108, 110),
-                        Location = new Point(530, 240),
-                        Size = new Size(60, 30)
-                    };
-                    rbt2.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                    rbt3 = new RadioButton
-                    {
-                        Text = "Paper",
-                        ForeColor = Color.FromArgb(70, 108, 110),
-                        Location = new Point(530, 270),
-                        Size = new Size(60, 30)
-                    };
-                    rbt3.CheckedChanged += new EventHandler(Rb1_CheckedChanged);
-                    this.Controls.Add(rbt1);
-                    this.Controls.Add(rbt2);
-                    this.Controls.Add(rbt3);*/
                     this.Controls.Add(btn1);
                     listBox = new ListBox();
                     listBox.Items.Add("Rock");
@@ -288,7 +261,6 @@ namespace formElements
                         ForeColor = Color.FromArgb(200, 248, 250)
                     };
                     this.Controls.Add(num);
-                    round = Convert.ToInt32(num.Value);
                     tittle.Visible = false;
                     author.Visible = false;
                     btn.Visible = false;
@@ -355,20 +327,6 @@ namespace formElements
 
                 }
                 
-                /*rbt1 = new RadioButton
-                {
-                    Text = "Rock",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(530, 200),
-                    Size = new Size(60, 30)
-                };
-                rbt4 = new RadioButton
-                {
-                    Text = "Rock",
-                    ForeColor = Color.FromArgb(70, 108, 110),
-                    Location = new Point(70, 200),
-                    Size = new Size(60, 30)
-                };*/
             }
         }
 
@@ -434,6 +392,7 @@ namespace formElements
 
         private void Btn1_Click(object sender, EventArgs e)
         {
+            round = Convert.ToInt32(num.Value);
             int i = 0;
             if (i<=round)
             {
