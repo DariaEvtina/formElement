@@ -384,7 +384,7 @@ namespace formElements
                     case ("Paper"): v1 = 2; Random rnd1 = new Random(); v2 = rnd1.Next(1, 4); break;
                     case ("Sicers"): v1 = 3; Random rnd2 = new Random(); v2 = rnd2.Next(1, 4); break;
                 }
-                imgChange2();
+                imgChange1();
             }
             else if (player==2)
             {
@@ -407,7 +407,7 @@ namespace formElements
                         case ("Paper"): v1 = 2; break;
                         case ("Sicers"): v1 = 3; break;
                     }
-                    imgChange2();
+                    imgChange1();
                 }
                 
             }
