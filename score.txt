@@ -25,3 +25,5 @@ Player1: player1 Score: 0
 Player2: player2 Score: 2
 Player1: player1 Score: 0
 Player2: player2 Score: 0
+Player1: player1 Score: 0
+Player2: player2 Score: 0
