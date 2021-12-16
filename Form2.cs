@@ -21,6 +21,7 @@ namespace formElements
         public string name2;
         PictureBox pb;
         PictureBox pb1;
+        int round=1;
         Label lbl;
         Label tittle;
         int points = 0;
@@ -29,14 +30,15 @@ namespace formElements
         Button btn;
         Button btn1;
         TreeView menu;
-        NumericUpDown num;
-        int round;
+        ListBox num;
         ListBox listBox;
         ListBox listBox1;
         public int player = 0;
         public int playedNow=1;
         public void imgChangeWin()
         {
+            imgChange1();
+            imgChange2();
             pb.Visible = true;
             pb1.Visible = true;
         }
@@ -49,10 +51,17 @@ namespace formElements
             num.Visible = false;
             tittle.Text = "Rock Paper Sicers game";
             listBox.Visible = false;
-            listBox1.Visible = false;
+            if (player==2)
+            {
+                if (playedNow==2)
+                {
+                    listBox1.Visible = false;
+                }
+                lbl.Visible = false;
+            }
             pb.Visible = false;
             pb1.Visible = false;
-            lbl.Visible = false;
+            
 
         }
         public void imgChange1()
@@ -177,13 +186,17 @@ namespace formElements
                 }
                 if (t == true)
                 {
-                    num = new NumericUpDown { 
-                    Location= new Point(320, 270),
-                    Size = new Size(50, 30),
-                    BackColor = Color.FromArgb(60, 138, 150),
-                    ForeColor = Color.FromArgb(200, 248, 250)
-                    };
-                    round = Convert.ToInt32(num.Value);
+                    num = new ListBox();
+                    num.Location = new Point(320, 270);
+                    num.Size = new Size(50, 30);
+                    num.Items.Add("1 round");
+                    num.Items.Add("5 round");
+                    num.Items.Add("10 round");
+                    num.Items.Add("15 round");
+                    num.Items.Add("50 round");
+                    num.Items.Add("100 round");
+                    num.Items.Add("∞ round");
+                    num.SelectedIndexChanged += new EventHandler(Num_SelectedIndexChanged);
                     this.Controls.Add(num);
                     tittle.Visible = false;
                     author.Visible = false;
@@ -253,13 +266,17 @@ namespace formElements
                 }
                 if (t==true)
                 {
-                    num = new NumericUpDown
-                    {
-                        Location = new Point(320, 270),
-                        Size = new Size(50, 30),
-                        BackColor = Color.FromArgb(60, 138, 150),
-                        ForeColor = Color.FromArgb(200, 248, 250)
-                    };
+                    num = new ListBox();
+                    num.Location = new Point(320, 270);
+                    num.Size = new Size(100, 50);
+                    num.Items.Add("1 round");
+                    num.Items.Add("5 round");
+                    num.Items.Add("10 round");
+                    num.Items.Add("15 round");
+                    num.Items.Add("50 round");
+                    num.Items.Add("100 round");
+                    num.Items.Add("∞ round");
+                    num.SelectedIndexChanged += new EventHandler(Num_SelectedIndexChanged);
                     this.Controls.Add(num);
                     tittle.Visible = false;
                     author.Visible = false;
@@ -312,7 +329,7 @@ namespace formElements
                         ForeColor = Color.FromArgb(200, 248, 250),
                         BackColor = Color.FromArgb(60, 138, 150),
                         Font = new Font("Calibri", 10, FontStyle.Bold),
-                        Bounds = new Rectangle(280, 290, 90, 50)
+                        Bounds = new Rectangle(280, 390, 90, 50)
                     };
 
                     lbl.Click += Lbl_Click;
@@ -330,7 +347,19 @@ namespace formElements
             }
         }
 
-
+        private void Num_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (num.SelectedItem.ToString())
+            {
+                case ("1 round"):round = 1; break;
+                case ("5 round"): round = 5; break;
+                case ("10 round"): round = 10; break;
+                case ("15 round"): round = 15; break;
+                case ("50 round"): round = 50; break;
+                case ("100 round"): round = 100; break;
+                case ("∞ round"): round = 0; break;
+            }
+        }
 
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -392,7 +421,6 @@ namespace formElements
 
         private void Btn1_Click(object sender, EventArgs e)
         {
-            round = Convert.ToInt32(num.Value);
             int i = 0;
             if (i<=round)
             {
@@ -497,7 +525,6 @@ namespace formElements
             }
             points = 0;
             points2 = 0;
-            num.Value = 0;
             v1 = 0;
             v2 = 0;
             pb.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
