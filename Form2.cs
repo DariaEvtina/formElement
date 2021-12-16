@@ -35,6 +35,26 @@ namespace formElements
         ListBox listBox1;
         public int player = 0;
         public int playedNow=1;
+        /*      
+                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
+                file.WriteLine("Player1: " + name1 + "Score:: " + points);
+                file.Close();
+
+                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
+                file.WriteLine("Player1: " + name1 + " Score: " + points + "\nPlayer2: " + name2 + " Score: " + points2);
+                file.Close();
+
+                points = 0;
+                points2 = 0;
+                v1 = 0;
+                v2 = 0;
+                pb.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
+                pb1.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
+                if (MessageBox.Show("Restart-Yes, Back to menu-No", "?????", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    bcMenu();
+                }
+        */
         public void imgChangeWin()
         {
             imgChange1();
@@ -126,8 +146,8 @@ namespace formElements
             {
                 Text = "Rock Paper Sicers game",
                 Location = new Point(150, 120),
-                Size = new Size(600, 40),
-                Font = new Font("Calibri", 26, FontStyle.Bold)
+                Size = new Size(700, 40),
+                Font = new Font("Calibri", 23, FontStyle.Bold)
             };
             this.BackColor= Color.FromArgb(120, 178, 180);
             menu.BackColor = Color.FromArgb(60, 138, 150);
@@ -187,7 +207,7 @@ namespace formElements
                 if (t == true)
                 {
                     num = new ListBox();
-                    num.Location = new Point(320, 270);
+                    num.Location = new Point(280, 270);
                     num.Size = new Size(50, 30);
                     num.Items.Add("1 round");
                     num.Items.Add("5 round");
@@ -267,7 +287,7 @@ namespace formElements
                 if (t==true)
                 {
                     num = new ListBox();
-                    num.Location = new Point(320, 270);
+                    num.Location = new Point(280, 270);
                     num.Size = new Size(100, 50);
                     num.Items.Add("1 round");
                     num.Items.Add("5 round");
@@ -421,117 +441,88 @@ namespace formElements
 
         private void Btn1_Click(object sender, EventArgs e)
         {
-            int i = 0;
-            if (i<=round)
-            {
                 if (player == 1)
                 {
-                    if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
-                    {
-                        tittle.Text = $"round {i} \nYOU LOSE";
-                        tittle.Visible = true;
-                        i++;
-                        imgChangeWin();
-                    }
-                    else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
-                    {
-                        tittle.Text = $"round { i} \nYOU WIN";
-                        tittle.Visible = true;
-                        points++;
-                        i++;
-                        imgChangeWin();
-                    }
-                    else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
-                    {
-                        tittle.Text = $"round {i} \nDRAW";
-                        tittle.Visible = true;
-                        points++;
-                        i++;
-                        imgChangeWin();
-                    }
-                }
-                else if (player == 2)
-                {
-                    if (playedNow == 1)
-                    {
                         if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
                         {
-                        tittle.Text = $"round {i} \nYOU LOSE";
-                        tittle.Visible = true;
-                        i++;
-                        imgChangeWin();
+                            tittle.Text = $"round {round} YOU LOSE";
+                            tittle.Visible = true;
+                            imgChangeWin();
                         }
                         else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
                         {
-                        tittle.Text = $"round { i} \nYOU WIN";
-                        tittle.Visible = true;
-                        points++;
-                        i++;
-                        imgChangeWin();
+                            tittle.Text = $"round {round} YOU WIN";
+                            tittle.Visible = true;
+                            points++;
+                            imgChangeWin();
                         }
                         else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
                         {
-                        tittle.Text = $"round {i} \nDRAW";
-                        tittle.Visible = true;
-                        points++;
-                        i++;
-                        imgChangeWin();
+                            tittle.Text = $"round {round} DRAW";
+                            tittle.Visible = true;
+                            points++;
+                            imgChangeWin();
                         }
+
                 }
-                    if (playedNow==2)
+                else if (player == 2)
+                {
+                    for (int i = 0; i < round + 1; i++)
                     {
-                        if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
+                        if (playedNow == 1)
                         {
-                            tittle.Text = $"round {i} \nYOU LOSE {name2}";
-                            tittle.Visible = true;
-                            imgChangeWin();
-                            i++;
+                            if (v1 == 1 && v2 == 2 || v1 == 3 && v2 == 1 || v1 == 2 && v2 == 3)
+                            {
+                                tittle.Text = $"round {round} YOU LOSE {name1}";
+                                tittle.Visible = true;
+                                imgChangeWin();
+                            }
+                            else if (v1 == 2 && v2 == 1 || v1 == 1 && v2 == 3 || v1 == 3 && v2 == 2)
+                            {
+                                tittle.Text = $"round {round} YOU WIN {name1}";
+                                tittle.Visible = true;
+                                points++;
+                                imgChangeWin();
+                            }
+                            else if (v1 == 2 && v2 == 2 || v1 == 1 && v2 == 1 || v1 == 3 && v2 == 3)
+                            {
+                                tittle.Text = $"round {round} DRAW ";
+                                tittle.Visible = true;
+                                points++;
+                                imgChangeWin();
+                            }
                         }
-                        else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
+                    
+                        if (playedNow==2)
                         {
-                            tittle.Text = $"round {i} \nYOU WIN {name2}";
-                            tittle.Visible = true;
-                            points2++;
-                            imgChangeWin();
-                            i++;
+                            if (v2 == 1 && v1 == 2 || v2 == 3 && v1 == 1 || v2 == 2 && v1 == 3)
+                            {
+                                tittle.Text = $"round {round} YOU LOSE {name2}";
+                                tittle.Visible = true;
+                                imgChangeWin();
+                            }
+                            else if (v2 == 2 && v1 == 1 || v2 == 1 && v1 == 3 || v2 == 3 && v1 == 2)
+                            {
+                                tittle.Text = $"round {round} YOU WIN {name2}";
+                                tittle.Visible = true;
+                                points2++;
+                                imgChangeWin();
 
-                        }
-                        else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
-                        {
-                            tittle.Text = $"round {i} \nDRAW";
-                            tittle.Visible = true;
-                            points2++;
-                            imgChangeWin();
-                            i++;
+                            }
+                            else if (v2 == 2 && v1 == 2 || v2 == 1 && v1 == 1 || v2 == 3 && v1 == 3)
+                            {
+                                tittle.Text = $"round {round} DRAW";
+                                tittle.Visible = true;
+                                points2++;
+                                imgChangeWin();
 
 
+                            }
                         }
                     }
-                    
                 }
-            }
-            
-            if (player == 1)
-            {
-                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
-                file.WriteLine("Player1: " + name1 + "Score:: " + points);
-                file.Close();
-            }
-            else if (player == 2)
-            {
-                StreamWriter file = new StreamWriter(@"..\..\score.txt", true);
-                file.WriteLine("Player1: "+ name1+ " Score: " + points+"\nPlayer2: "+name2+ " Score: "+ points2);
-                file.Close();
-            }
-            points = 0;
-            points2 = 0;
-            v1 = 0;
-            v2 = 0;
-            pb.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
-            pb1.Image = Image.FromFile(@"../../img/rpsIMG/choose.png");
-            if (MessageBox.Show("Restart-Yes, Back to menu-No", "?????", MessageBoxButtons.YesNo) == DialogResult.No){
-                bcMenu();
-            }
+                 
+
         }
 
 
